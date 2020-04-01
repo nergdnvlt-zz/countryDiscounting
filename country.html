@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Country Discounting</title>
+
+	<!-- jQuery and Index.js import -->
+	<script
+  		src="https://code.jquery.com/jquery-3.4.1.js"
+  		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  		crossorigin="anonymous">
+  	</script>
+
+	<script type="text/javascript" src="js/index.js"></script>
+
+	<!-- Fastspring SBL Snippet -->
+	<script
+    	id="fsc-api"
+    	src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.3/fastspring-builder.min.js"
+    	type="text/javascript"
+    	data-storefront="machinefarm.test.onfastspring.com/popup-capture"
+    	data-data-callback="dataCallbackFunction">
+	</script>
+
+	<!-- FOR DEMO PURPOSES - To apply a country on page load -->
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			var country = window.location.search.substring(1).split('=')[1]
+			fastspring.builder.country(country);
+		})
+	</script>
+
+	<!-- FOR DEMO PURPOSES - Add the product by default -->
+	<script type="text/javascript">
+		fastspring.builder.add('capture-on1');
+	</script>
+</head>
+<body>
+
+	<p>
+		Price:
+		<span data-fsc-item-path="capture-on1" data-fsc-item-total></span>
+
+		<br><br>
+
+		Discount:
+		<span data-fsc-order-discountTotal></span>
+
+
+		<br><br>
+
+		<button onclick="fastspring.builder.checkout();">Buy</button>
+	</p>
+
+</body>
+</html>
